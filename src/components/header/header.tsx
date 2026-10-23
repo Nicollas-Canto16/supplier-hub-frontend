@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { PulsatingButton } from "@/components/ui/pulsating-button";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 export function Header() {
   return (
@@ -30,7 +31,9 @@ export function Header() {
           {/* <Button variant={"ghost"}>Preços</Button> */}
           <Button variant={"ghost"}>FAQ</Button>
           <Separator orientation="vertical" />
-          <PulsatingButton variant="ripple">Entrar</PulsatingButton>
+          <Link href={"/login"}>
+            <PulsatingButton variant="ripple">Entrar</PulsatingButton>
+          </Link>
         </div>
       </div>
       <Separator />
