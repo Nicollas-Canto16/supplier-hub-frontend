@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/input-group";
 import { cn } from "cn";
 import { EyeClosed } from "lucide-react";
+import Link from "next/link";
 
 const LoginText = {
   title: "Login",
@@ -55,7 +56,7 @@ export default function Login() {
               </InputGroupAddon>
             </InputGroup>
           </Field>
-          <Button type="submit">Entrar</Button>
+          <Link href={"/inicio"}><Button>Entrar</Button></Link>
         </div>
       </form>
     </div>
