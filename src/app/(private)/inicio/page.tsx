@@ -51,7 +51,7 @@ export default function Inicio() {
           </Link>
         </div>
       </div>
-      <div className="flex justify-around">
+      <div className="flex flex-wrap gap-10">
         {CardCategorys.map((card) => {
           return (
             <CardCategory
