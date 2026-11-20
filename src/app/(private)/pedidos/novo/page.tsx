@@ -90,7 +90,6 @@ export default function NovoPedido() {
     }, [item]);
   }
 
-
   return (
     <PrivateTemplate>
       <Link href={"/pedidos"} className="flex">
@@ -190,7 +189,7 @@ export default function NovoPedido() {
                       </Field>
                       <Field className="w-sm">
                         <FieldLabel>Valor total</FieldLabel>
-                        <Input id="total-value" disabled value={} />
+                        <Input id="total-value" disabled />
                       </Field>
                       <Button
                         onClick={() => removeItem(index)}
