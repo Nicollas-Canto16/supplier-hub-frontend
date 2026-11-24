@@ -1,6 +1,10 @@
 "use client";
 
-import { useTable, type ColumnDef, type RowData } from "@tanstack/react-table";
+import {
+  PaginationState,
+  type ColumnDef,
+  type RowData,
+} from "@tanstack/react-table";
 
 import {
   Table,
@@ -15,6 +19,15 @@ import { DataTableFeatures, features } from "./data-table-feature";
 interface DataTableProps<TData extends RowData> {
   columns: ColumnDef<DataTableFeatures, TData>[];
   data: TData[];
+
+  pagination?: PaginationState;
+  setPagination?: React.Dispatch<React.SetStateAction<PaginationState>>;
+
+  total?: number;
+
+  onReload?: () => void;
+  isLoading?: boolean;
+  // orderBy?: DataTableO terminar de adicionar o orderby
 }
 
 export function DataTable<TData extends RowData>({
@@ -70,4 +83,11 @@ export function DataTable<TData extends RowData>({
       </Table>
     </div>
   );
+}
+function useTable(arg0: {
+  features: any;
+  data: TData[];
+  columns: ColumnDef<any, TData>[];
+}) {
+  throw new Error("Function not implemented.");
 }

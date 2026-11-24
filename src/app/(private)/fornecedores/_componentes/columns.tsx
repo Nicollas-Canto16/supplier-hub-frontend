@@ -1,45 +1,67 @@
 "use client";
 
 import { DataTableFeatures } from "@/components/data-table/data-table-feature";
-import { createColumnHelper } from "@tanstack/react-table";
+import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
+import { z } from "zod";
 
-export type Supplier = {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  instagram: string;
-  site: string;
-  description: string;
-  category: string;
-  contactName: string;
-};
+export const dataSchema = z.object({
+  name: z.string(),
+  email: z.string(),
+  phone: z.string(),
+  address: z.string(),
+  instagram: z.string(),
+  site: z.string(),
+  description: z.string(),
+  category: z.string(),
+  contactName: z.string(),
+});
 
-const columnHelper = createColumnHelper<DataTableFeatures, Supplier>();
+export type Supplier = z.infer<typeof dataSchema>;
 
-export const columns = columnHelper.columns([
-  columnHelper.accessor("name", {
+export const columns: ColumnDef<Supplier>[] = [
+  {
+    accessorKey: "name",
     header: "Nome",
-  }),
-  columnHelper.accessor("email", {
+    cell: ({ row }) => <div className="w-[200px]">{row.getValue("name")}</div>,
+  },
+  {
+    accessorKey: "email",
     header: "Email",
-  }),
-  columnHelper.accessor("phone", {
-    header: "Telefone",
-  }),
-  columnHelper.accessor("address", {
+    cell: ({ row }) => <div className="w-[300px]">{row.getValue("email")}</div>,
+  },
+  {
+    accessorKey: "phone",
+    header: "Contato",
+    cell: ({ row }) => <div className="w-[200px]">{row.getValue("phone")}</div>,
+  },
+  {
+    accessorKey: "address",
     header: "Endereço",
-  }),
-  columnHelper.accessor("instagram", {
+    cell: ({ row }) => <div className="w-[200px]">{row.getValue("address")}</div>,
+  },
+  {
+    accessorKey: "instagram",
     header: "Instagram",
-  }),
-  columnHelper.accessor("site", {
+    cell: ({ row }) => <div className="w-[200px]">{row.getValue("instagram")}</div>,
+  },
+  {
+    accessorKey: "site",
     header: "Site",
-  }),
-  columnHelper.accessor("description", {
-    header: "descrição",
-  }),
-  columnHelper.accessor("contactName", {
-    header: "Nome para contato",
-  }),
-]);
+    cell: ({ row }) => <div className="w-[200px]">{row.getValue("site")}</div>,
+  },
+  {
+    accessorKey: "description",
+    header: "Descricao",
+    cell: ({ row }) => <div className="w-[300px]">{row.getValue("description")}</div>,
+  },
+  {
+    accessorKey: "category",
+    header: "Categoria",
+    cell: ({ row }) => <div className="w-[200px]">{row.getValue("category")}</div>,
+  },
+  {
+    accessorKey: "scontactNameite",
+    header: "Nome para Contato",
+    cell: ({ row }) => <div className="w-[200px]">{row.getValue("contactName")}</div>,
+  },
+];
